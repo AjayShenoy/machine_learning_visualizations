@@ -2,7 +2,6 @@ import ipywidgets
 import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
-from matplotlib.colors import ListedColormap
 from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.datasets import make_blobs, make_circles, make_moons
@@ -71,8 +70,7 @@ class DecisionTreeExample:
                         options=np.arange(0, 1, 0.05), value=0.1
                     ),
                     "scale_factor": ipywidgets.SelectionSlider(
-                        options=np.arange(0, 1, 0.1),
-                        value=0.5,
+                        options=np.arange(0, 1, 0.1), value=0.5,
                     ),
                 },
             },
@@ -120,10 +118,13 @@ class DecisionTreeExample:
         self.axs_1[1].axis("off")
         chosen_dataset = self.datasets[dataset]  # get_blobs
         ipywidgets.interact(chosen_dataset["widget"], **chosen_dataset["args"])
-        ipywidgets.interact(self.choose_classifier, classifier=ipywidgets.Dropdown(
-            options=["decision_tree", "logistic_regression"],
-            value="decision_tree"
-        ))
+        ipywidgets.interact(
+            self.choose_classifier,
+            classifier=ipywidgets.Dropdown(
+                options=["decision_tree", "logistic_regression"],
+                value="decision_tree",
+            ),
+        )
         ipywidgets.interact(
             self.run_widget_dt,
             max_depth=ipywidgets.SelectionSlider(
@@ -177,10 +178,20 @@ class DecisionTreeExample:
             self.fig_3, self.axs_p2 = plt.subplots(1, 2, figsize=(8, 4))
             self.split_dataset_axis = [self.axs_p1, self.axs_p2]
             self.display_decision_tree(
-                X[0::2], y[0::2], self.axs_p1[0], self.axs_p2[0], max_depth, display
+                X[0::2],
+                y[0::2],
+                self.axs_p1[0],
+                self.axs_p2[0],
+                max_depth,
+                display,
             )
             self.display_decision_tree(
-                X[1::2], y[1::2], self.axs_p1[1], self.axs_p2[1], max_depth, display
+                X[1::2],
+                y[1::2],
+                self.axs_p1[1],
+                self.axs_p2[1],
+                max_depth,
+                display,
             )
         else:
             try:
@@ -205,7 +216,10 @@ class DecisionTreeExample:
         """
         self.num_classes = num_classes
         self.X, self.y = make_blobs(
-            n_samples=300, centers=num_classes, random_state=0, cluster_std=cluster_std
+            n_samples=300,
+            centers=num_classes,
+            random_state=0,
+            cluster_std=cluster_std,
         )
         self.show_scatter_plot()
 
@@ -250,7 +264,9 @@ class DecisionTreeExample:
         self.axs_1[1].axis("off")
         self.choose_classifier(self.classifier_string)
 
-    def display_decision_tree(self, X, y, ax1, ax2, max_depth=3, display=False):
+    def display_decision_tree(
+        self, X, y, ax1, ax2, max_depth=3, display=False
+    ):
         """
         Parameters
         ----------

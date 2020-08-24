@@ -6,7 +6,7 @@ A minimal Jupyter notebook:
 
 ```python
 >>> %matplotlib nbagg
->>> from dt_v1 import DecisionTreeExample
+>>> from decision_tree_example import DecisionTreeExample
 >>> dte = DecisionTreeExample()
 >>> dte.widget_decision_tree()
 ```
