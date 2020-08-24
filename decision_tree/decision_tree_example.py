@@ -46,7 +46,7 @@ class DecisionTreeExample:
     This minimal notebook is contained in decision_tree_notebook.ipynb.
     When this is run, it provides a framework to see different datasets and experiment
     with the DecisionTreeClassifier and LogisticRegression classes from sklearn. The
-    need for reducing variation in decision trees is also motivated by splitting the
+    need for reducing variance in decision trees is also motivated by splitting the
     dataset. This lays the foundation for an understanding of bootstrap, bagging and
     random forests.
     """

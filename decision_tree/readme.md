@@ -4,10 +4,12 @@ Jupyter widgets are used to enhance the interactive nature of the notebook.
 
 A minimal Jupyter notebook:
 
+```python
 >>> %matplotlib nbagg
 >>> from dt_v1 import DecisionTreeExample
 >>> dte = DecisionTreeExample()
 >>> dte.widget_decision_tree()
+```
 
 This minimal notebook is contained in decision_tree_notebook.ipynb.
 When this is run, it provides a framework to see different datasets and experiment with
